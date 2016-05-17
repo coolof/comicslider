@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/*.wrapper {
+  margin: 0 auto;
+  padding: 5vh 5vw;
+}*/
+
+
+/* --------------
+  Slider
+-------------- */
+.cslider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.cslider .slides {
+  padding: 0;
+  margin: 0;
+}
+
+.cslider .slide {
+  /*display: none;*/
+  position: absolute;
+  z-index: 8;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  list-style: none;
+  list-style-image: none;
+  padding: 0;
+  margin: 0;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity 0s 0.3s linear, transform 0.25s 0.25s ease-in-out;
+}
+
+.cslider .credit {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 0px 12px 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 16px;
+  box-shadow: 0px 0px 16px 16px rgba(0,0,0,0.5);
+}
+.cslider .credit a {
+  color: #fff;
+}
+
+/* Animation hack */
+.from-left .slides .slide:nth-child(1) {
+  opacity: 0;
+  transform: translateX(-50%)
+}
+.from-right .slides .slide:nth-child(2) {
+  opacity: 0;
+  transform: translateX(50%)
+}
+
+/*.cslider .slide.active {
+  display: block;
+}*/
+
+.cslider .swoosh {
+  position: absolute;
+  z-index: 16;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  transition: left 0.6s ease-in-out;
+}
+.cslider .swoosh:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -380px;
+  top: 0px;
+  width: 380px;
+  height: 100%;
+  background: transparent url(img/swoosh-left.png) repeat-y left -64px;
+}
+.cslider .swoosh:after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: -380px;
+  top: 0px;
+  width: 380px;
+  height: 100%;
+  background: transparent url(img/swoosh-right.png) repeat-y right 16px;
+}
+
+.cslider.from-left .swoosh {
+  left: calc(-100% - 380px);
+}
+.cslider.from-right .swoosh {
+  left: calc(100% + 380px);
+}
+
+@media screen and (max-width: 500px) {
+  .cslider .slide {
+    transition: opacity 0s 0.25s linear, transform 0.22s 0.2s ease-in-out;
+  }
+
+  .cslider .swoosh {
+    transition: left 0.5s ease-in-out;
+  }
+
+  .cslider .swoosh:before,
+  .cslider .swoosh:after {
+    -webkit-background-size: 220px auto;
+    background-size: 220px auto;
+    width: 220px;
+  }
+  .cslider .swoosh:before {
+    left: -220px;
+  }
+  .cslider .swoosh:after {
+    right: -220px;
+  }
+
+  .cslider.from-left .swoosh {
+    left: calc(-100% - 220px);
+  }
+  .cslider.from-right .swoosh {
+    left: calc(100% + 220px);
+  }
+}
